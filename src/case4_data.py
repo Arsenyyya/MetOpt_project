@@ -2,15 +2,24 @@ import numpy as np
 from scipy.integrate import trapezoid
 
 
-def make_grid(n_points=100):
+def make_grid(n_points: int = 100) -> np.ndarray:
+    """Create a uniform grid on the interval [0, 1]."""
     return np.linspace(0.0, 1.0, n_points)
 
 
-def true_weight_function(t):
+def true_weight_function(t: np.ndarray) -> np.ndarray:
+    """Return the true weight function values on the grid."""
     return 2 * np.sin(2 * np.pi * t) - t
 
 
-def generate_functional_data(n_samples=300, n_points=100, x_noise=0.10, y_noise=0.10, random_state=42):
+def generate_functional_data(
+    n_samples: int = 300,
+    n_points: int = 100,
+    x_noise: float = 0.10,
+    y_noise: float = 0.10,
+    random_state: int = 42,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict[str, np.ndarray]]:
+    """Generate synthetic functional regression data."""
     rng = np.random.default_rng(random_state)
     t = make_grid(n_points)
 
@@ -33,4 +42,3 @@ def generate_functional_data(n_samples=300, n_points=100, x_noise=0.10, y_noise=
 
     params = {"a": a, "b": b, "c": c, "y_clean": y_clean}
     return t, X_func, y, params
-
