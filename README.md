@@ -92,6 +92,12 @@ Markdown-версия отчета находится в файле:
 
 [report.md](report.md)
 
+Для повторной генерации PDF-отчета из Markdown и кода выполните:
+
+```bash
+python scripts/build_report.py
+```
+
 ## Зависимости
 
 Основные зависимости перечислены в файле `requirements.txt`:
@@ -105,4 +111,5 @@ pandas
 jupyter
 nbconvert
 pytest
+reportlab
 ```
